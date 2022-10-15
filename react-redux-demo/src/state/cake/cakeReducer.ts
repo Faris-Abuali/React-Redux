@@ -4,7 +4,7 @@ type CakeAction = {
     type: typeof BUY_CAKE,
     payload: number
 }
-type CakeState = {
+export type CakeState = {
     numOfCakes: number
 }
 
@@ -13,7 +13,6 @@ const initialState = {
 }
 
 const cakeReducer = (state: CakeState = initialState, action: CakeAction) => {
-    console.log(action);
     switch (action.type) {
         case BUY_CAKE: return {
             ...state,

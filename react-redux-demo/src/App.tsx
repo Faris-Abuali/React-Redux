@@ -12,12 +12,12 @@ const App = () => {
   return (
     <div className="App">
       <CakeContainer />
-      <CakeContainer2 />
+      {/* <CakeContainer2 />
       <IceCreamContainer />
       <NewCakeContainer />
       <ItemContainer cake />
-      <ItemContainer />
-      <UserContainer />
+      <ItemContainer /> */}
+      <UserContainer query="m" />
     </div>
   )
 }
