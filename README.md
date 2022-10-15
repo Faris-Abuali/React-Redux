@@ -1,4 +1,4 @@
-## My follow-up with <i>React Redux Tutorial</i> from Codevolution YouTube Channel
+## My progress following <i>React Redux Tutorial</i> from Codevolution YouTube Channel
 I highly recommend watching this YouTube playlist! <br /> 📽️📑
 https://youtube.com/playlist?list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK
 
