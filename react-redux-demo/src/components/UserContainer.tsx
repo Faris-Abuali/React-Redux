@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux";
-import { AnyAction, Dispatch } from 'redux';
 import { fetchUsers } from "../state";
+import { selectUsersByQuery } from '../state/cake/selectors';
 import { RootState } from '../state/rootReducer';
+import { UserObject } from '../state/user/userReducer';
 
-type UserContainerProps = {}
+type UserContainerProps = {
+  query?: string;
+}
 
 const UserContainer: React.FC<
   UserContainerProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
-> = ({ usersState, fetchUsers }) => {
+> = ({ usersState, fetchUsers, filteredUsers }) => {
 
   useEffect(() => {
     fetchUsers();
@@ -23,20 +26,27 @@ const UserContainer: React.FC<
         <div>
           <h2>Users List</h2>
           <main>
-            {users.map((user: any) => <p>{user?.name}</p>)}
+            {users.map((user: any) => <p key={user.name}>{user?.name}</p>)}
           </main>
+          <br />
+          <h2>Filtered Users List</h2>
+          <ul>
+            {filteredUsers.map((user: UserObject) => <li key={user.name}>{user?.name}</li>)}
+          </ul>
         </div>
       )
 }
 
 const mapStateToProps = (state: RootState, ownProps: any) => {
+  console.log("mapStateToProps...");
   return {
-    usersState: state.user
+    usersState: state.user,
+    filteredUsers: selectUsersByQuery(state, ownProps.query)
   }
 }
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    fetchUsers: () => dispatch(fetchUsers())
+    fetchUsers: () => dispatch(fetchUsers()),
   }
 };
 

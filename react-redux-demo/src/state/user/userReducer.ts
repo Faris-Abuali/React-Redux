@@ -1,8 +1,14 @@
 import { userActions } from "./userTypes";
 
+export type UserObject = {
+    id: number,
+    name: string,
+    username: string,
+}
+
 export type UserState = {
     loading: boolean;
-    users: any[];
+    users: UserObject[];
     error: string;
 };
 
